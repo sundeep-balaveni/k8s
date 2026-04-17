@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: roboshop
+  labels:
+    app: frontend
+
+spec:
+  containers:
+    - name: frontend
+      image: nginx:latest
+      ports:
+        - containerPort: 80
