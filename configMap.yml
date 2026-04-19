@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: DB-config
   namespace: roboshop
-  data:
+data:
   DB_HOST: "MYSQL-SERVICE"
   DB_PORT: "3306"
