@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: DB-config
+  name: db-config
   namespace: roboshop
 data:
   DB_HOST: "MYSQL-SERVICE"
