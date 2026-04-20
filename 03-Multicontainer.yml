@@ -12,8 +12,18 @@ spec:
       image: almalinux
       command: ["sleep" , "1000"]
       envFrom:
-        - configMapRef:
-            name: db-config
+
+  volumes:
+    - name: config-volume
+      configMap:   
+        name: db-config
+    - name: secret-volume
+      secret:
+        secretName: db-secret
+        # - configMapRef:
+        #     name: db-config
+        # - secretRef:
+        #     name: db-secret
   
 
   
