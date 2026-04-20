@@ -3,6 +3,10 @@ kind: Pod
 metadata:
   name: multicontainer
   namespace: roboshop
+
+  labels:
+    project: roboshop
+    app: multicontainer
 spec:
   containers: 
     - name: nginx
@@ -13,17 +17,17 @@ spec:
       command: ["sleep" , "1000"]
       envFrom:
 
-  volumes:
-    - name: config-volume
-      configMap:   
-        name: db-config
-    - name: secret-volume
-      secret:
-        secretName: db-secret
-        # - configMapRef:
-        #     name: db-config
-        # - secretRef:
-        #     name: db-secret
+  # volumes:
+  #   - name: config-volume
+  #     configMap:   
+  #       name: db-config
+  #   - name: secret-volume
+  #     secret:
+  #       secretName: db-secret
+        - configMapRef:
+            name: db-config
+        - secretRef:
+            name: db-secret
   
 
   
