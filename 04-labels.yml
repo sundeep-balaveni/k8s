@@ -1,0 +1,8 @@
+appVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: roboshop
+  labels:
+    project: roboshop
+    app: frontend
