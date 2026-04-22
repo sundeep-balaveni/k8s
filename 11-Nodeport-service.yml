@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: frontend-service
   namespace: roboshop
-type: Nodeport
+type: NodePort
 
 spec:
   selector:
