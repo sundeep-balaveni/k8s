@@ -12,7 +12,15 @@ spec:
     app: multicontainer
 
   ports:
-  - protocol: TCP
+  - name: nginx
+    protocol: TCP
     port: 80  #service port
     targetPort: 80 #container port
     nodePort: 30080  #node port
+
+
+  - name: almalinux
+    protocol: TCP
+    port: 81  #service port
+    targetPort: 8080 #container port
+    nodePort: 30081  #node port
