@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: roboshop
+  labels:
+    app: frontend
+
+
+
+spec:
+  containers: 
+    - name: frontend
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+      command: [sh -c, "echo Hello World > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"]
+      volumeMounts:
+        - name: Frontend-logs
+          mountPath: /var/log/nginx
+
+
+
+    - name: frontend-sidecar
+      image: busybox:latest
+      ports:
+        - containerPort: 80
+      command: [sh, -c, "tail -f /var/log/nginx/access.log"]
+      volumeMounts:
+        - name: Frontend-logs
+          mountPath: /var/log/nginx   
+
+        # - name: DB-config
+        #   mountPath: /etc/config
+
+volumes:
+  - name: Frontend-logs
+    emptyDir: {}
+    path: /var/log/nginx
+ 
+  # - name: DB-config
+  #   configMap:
+  #     name: DB-config
